@@ -1,11 +1,12 @@
 const router = require('express').Router();
 
 const postController = require('../controller/postController');
+const { protect } = require('../middleware/authMiddleware');
 
 router
   .route('/')
-  .get(postController.getAllPost)
-  .post(postController.createPost);
+  .get(protect, postController.getAllPost)
+  .post(protect, postController.createPost);
 
 router
   .route('/:id')

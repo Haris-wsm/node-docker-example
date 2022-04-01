@@ -37,6 +37,7 @@ exports.getOnePost = async (req, res) => {
 
 exports.createPost = async (req, res) => {
   try {
+    console.log(req.user);
     const post = await Post.create(req.body);
 
     res.status(201).json({
