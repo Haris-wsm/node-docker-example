@@ -38,6 +38,8 @@ app.enable('trust proxy');
 
 app.use(cors());
 
+const ONE_DAY = 1000 * 60 * 60 * 24;
+
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -47,7 +49,7 @@ app.use(
       saveUninitialized: false,
       resave: false,
       httpOnly: true,
-      maxAge: 30000
+      maxAge: ONE_DAY
     }
   })
 );
